@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import axios from "axios";
-import { Typography, Col, Row, Avatar } from "antd";
-const { Title, Text } = Typography;
+import { Col, Row, Avatar, Card, Skeleton } from "antd";
+import moment from "moment";
+const CommentSection = lazy(() => import("./CommentSection"));
+
+const { Meta } = Card;
 
 function PostPage(props) {
   const [post, setPost] = useState([]);
@@ -9,38 +12,51 @@ function PostPage(props) {
   const fetchBlog = async () => {
     const { data } = await axios.post(`/api/blog/getPost/${postId}`);
     setPost(data.blog);
-    console.log(data);
   };
 
   useEffect(() => {
     fetchBlog();
   }, []);
-  console.log(post);
+  const created = post.createdAt;
 
   if (post.id) {
     return (
-      <div className="postPage" style={{ margin: "1rem" }}>
+      <>
         <Row justify="space-around" align="middle">
           <Col md={12}>
-            <Title level={4}>
-              <Avatar src={post.avatar} />
-              {"   "}
-              {post.writer}
-            </Title>
-            <br />
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              <Text level={4}>{post.createdAt}</Text>
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <Card
+              className="postPage"
+              style={{ margin: "1rem", border: "0px" }}
+            >
+              <Meta
+                avatar={<Avatar src={post.avatar} />}
+                title={post.writer}
+                description={moment()
+                  .subtract(1, { created })
+                  .format("YYYY-MM-DD HH:mm:ss")}
+              />
+              <br />
+              <div
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              ></div>
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            </Card>
           </Col>
         </Row>
-      </div>
+        <Row justify="space-around" align="middle">
+          <Col md={12}>
+            <CommentSection />
+          </Col>
+        </Row>
+      </>
     );
   } else {
     return (
-      <div style={{ width: "80%", margin: "3rem auto", textAlign: "center" }}>
-        loading...
-      </div>
+      <Row justify="space-around" align="middle">
+        <Col>
+          <Skeleton avatar paragraph={{ rows: 4 }} />
+        </Col>
+      </Row>
     );
   }
 }
