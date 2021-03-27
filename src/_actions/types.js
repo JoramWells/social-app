@@ -1,0 +1,20 @@
+export const LOGIN_USER = "login_user";
+export const REGISTER_USER = "register_user";
+export const AUTH_USER = "auth_user";
+export const LOGOUT_USER = "logout_user";
+
+export const USER_SIGNIN_REQUEST = "USER_SIGNIN_REQUEST";
+export const USER_SIGNIN_SUCCESS = "USER_SIGNIN_SUCCESS";
+export const USER_SIGNIN_FAIL = "USER_SIGNIN_FAIL";
+
+export const USER_REGISTER_REQUEST = "USER_REGISTER_REQUEST";
+export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
+export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL";
+
+export const BLOG_DETAILS_REQUEST = "BLOG_DETAILS_REQUEST";
+export const BLOG_DETAILS_SUCCESS = "BLOG_DETAILS_SUCCESS";
+export const BLOG_DETAILS_FAIL = "BLOG_DETAILS_FAIL";
+
+export const BLOG_SAVE_REQUEST = "BLOG_SAVE_REQUEST";
+export const BLOG_SAVE_SUCCESS = "BLOG_SAVE_SUCCESS";
+export const BLOG_SAVE_FAIL = "BLOG_SAVE_FAIL";
