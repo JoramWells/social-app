@@ -1,8 +1,8 @@
-import React, { useEffect, useState, lazy } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Col, Row, Avatar, Card, Skeleton } from "antd";
 import moment from "moment";
-const CommentSection = lazy(() => import("./CommentSection"));
+// const CommentSection = lazy(() => import("./CommentSection"));
 
 const { Meta } = Card;
 
@@ -43,16 +43,16 @@ function PostPage(props) {
             </Card>
           </Col>
         </Row>
-        <Row justify="space-around" align="middle">
+        {/* <Row justify="space-around" align="middle">
           <Col md={12}>
             <CommentSection />
           </Col>
-        </Row>
+        </Row> */}
       </>
     );
   } else {
     return (
-      <Row justify="space-around" align="middle">
+      <Row justify="space-around" align="middle" style={{ marginTop: "100px" }}>
         <Col>
           <Skeleton avatar paragraph={{ rows: 4 }} />
         </Col>

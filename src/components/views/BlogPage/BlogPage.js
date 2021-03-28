@@ -37,12 +37,13 @@ function BlogPage() {
           ) : (
             <Col>
               {blogs.map((blog) => (
-                <Row justify="space-around" align="middle" key={blog.id}>
+                <Row justify="space-around" align="stretch" key={blog.id}>
                   <Link to={`/blog/post/${blog.id}`}>
                     <Col md={12}>
                       <Card
+                        className="card"
                         hoverable
-                        style={{ width: 365, marginTop: 16 }}
+                        style={{ width: 450, marginTop: 16 }}
                         actions={
                           [
                             // <Icon type="setting" key="setting" />,
@@ -51,13 +52,11 @@ function BlogPage() {
                           ]
                         }
                       >
-                        
-                          <Meta
-                            avatar={<Avatar src={blog.avatar} />}
-                            title={blog.writer}
-                            description={blog.updatedAt}
-                          />
-                        
+                        <Meta
+                          avatar={<Avatar src={blog.avatar} />}
+                          title={blog.writer}
+                          description={blog.updatedAt}
+                        />
 
                         <div
                           style={{
